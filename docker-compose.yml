@@ -1,0 +1,30 @@
+version: "3.9"
+
+services:
+
+  # PostgreSQL — stores users, roles, document metadata
+  postgres:
+    image: postgres:15
+    container_name: finvault_postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: finvault
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  # Qdrant — vector database for semantic search
+  qdrant:
+    image: qdrant/qdrant:latest
+    container_name: finvault_qdrant
+    ports:
+      - "6333:6333"   # REST API
+      - "6334:6334"   # gRPC
+    volumes:
+      - qdrant_data:/qdrant/storage
+
+volumes:
+  postgres_data:
+  qdrant_data:

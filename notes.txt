@@ -1,0 +1,35 @@
+my learning notes while doing this assignment
+
+Day 1:
+- setup fastapi project structure
+- made database models for users, roles, documents
+- implemented register and login apis
+- JWT was confusing at first but understood it after reading docs
+
+Day 2:
+- worked on document upload
+- added role based access control
+- admin, analyst, auditor, client roles
+- faced bcrypt error - "password cannot be longer than 72 bytes"
+- fixed by switching to hashlib + sha256
+
+Day 3:
+- started RAG implementation
+- learned about vector embeddings
+- used sentence-transformers library (all-MiniLM-L6-v2 model)
+- setup qdrant vector database using docker
+- chunking logic - split document text into 500 char chunks
+
+Day 4:
+- implemented semantic search
+- added reranking using cross-encoder
+- reranker takes top 20 results from qdrant and picks best 5
+- tested all apis on swagger ui
+- pushed code to github
+
+things i learned:
+- RAG = Retrieval Augmented Generation
+- vector database stores embeddings (numbers representing text meaning)
+- cosine similarity is used to find similar vectors
+- JWT tokens expire after some time
+- docker is useful for running services locally
